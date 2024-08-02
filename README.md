@@ -1,4 +1,4 @@
-A customizable slide button component with various properties.
+A customizable slider button widget for triggering events in your Flutter app, perfect for authentication, form submission, and more.
 
 ## Features
 
