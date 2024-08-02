@@ -1,6 +1,6 @@
 name: slider_button_component
 description: "A customizable slider button widget for triggering events in your Flutter app, perfect for authentication, form submission, and more"
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/cakhandi95/slider_button_flutter
 
 environment:
