@@ -1,6 +1,6 @@
 name: slider_button_component
 description: "Customizable slider button widget some event"
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/cakhandi95/slider_button_flutter
 
 environment:

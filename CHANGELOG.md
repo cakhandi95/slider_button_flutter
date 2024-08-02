@@ -1,4 +1,9 @@
-## [1.0.0] - 2024-07-31
+## [1.0.1] - 2024-08-02
+
+* Update License.
+* Update Changelog.
+
+## [1.0.0] - 2024-08-02
 ### Added
 * Initial release of ButtonSlideComponent.
 * Customizable properties for the slide button including child, radius, height, width, buttonSize, buttonWidth, backgroundColor, baseColor, highlightedColor, buttonColor, label, alignLabel, boxShadow, icon, shimmer, vibrationFlag, disable, onSlideCompleted, and messageTooltip.
