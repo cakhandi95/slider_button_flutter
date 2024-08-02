@@ -1,3 +1,7 @@
+## [1.0.4] - 2024-08-02
+
+* Repair Code Analysis for score pub.dev
+
 ## [1.0.3] - 2024-08-02
 
 * Update version vibration 1.9.0 for slide button

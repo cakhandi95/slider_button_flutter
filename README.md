@@ -39,5 +39,5 @@ Add the following line to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  button_slide_component: ^1.0.3    
+  button_slide_component: ^1.0.4    
 

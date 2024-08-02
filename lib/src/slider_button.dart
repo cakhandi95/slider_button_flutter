@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:slider_button_component/styles/styles.dart';
 import 'package:vibration/vibration.dart';
 
 ///
@@ -8,7 +7,6 @@ import 'package:vibration/vibration.dart';
 ///
 
 class ButtonSlideComponent extends StatefulWidget {
-
   /// To make button more customizable, add your child widget.
   final Widget? child;
 
@@ -65,7 +63,7 @@ class ButtonSlideComponent extends StatefulWidget {
     this.alignLabel = Alignment.center,
     this.backgroundColor = const Color(0xffe0e0e0),
     this.baseColor = Colors.black87,
-    this.buttonColor = kBlueDark,
+    this.buttonColor = const Color(0xFF0E2B5A),
     this.highlightedColor = Colors.white,
     this.label,
     this.icon,
@@ -78,7 +76,7 @@ class ButtonSlideComponent extends StatefulWidget {
 }
 
 class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
-  double _buttonPosition  = 0.0;
+  double _buttonPosition = 0.0;
   double _initialPosition = 0.0;
 
   @override
@@ -91,7 +89,7 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
     return Container(
       height: widget.height,
       width: widget.width,
-      decoration: BoxDecoration (
+      decoration: BoxDecoration(
         color: widget.disable ? Colors.grey.shade700 : widget.backgroundColor,
         borderRadius: BorderRadius.circular(widget.radius),
       ),
@@ -99,16 +97,17 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
       child: Stack(
         alignment: Alignment.centerLeft,
         children: <Widget>[
-          Container (
+          Container(
             alignment: widget.alignLabel,
             child: widget.shimmer && !widget.disable
                 ? Shimmer.fromColors(
-              baseColor: widget.disable ? Colors.grey : widget.baseColor,
-              highlightColor: widget.highlightedColor,
-              child: widget.label ?? const Text(''),
-            ) : widget.label,
+                    baseColor: widget.disable ? Colors.grey : widget.baseColor,
+                    highlightColor: widget.highlightedColor,
+                    child: widget.label ?? const Text(''),
+                  )
+                : widget.label,
           ),
-          if (widget.disable) ... [
+          if (widget.disable) ...[
             Tooltip(
               verticalOffset: 50,
               message: widget.messageTooltip,
@@ -117,7 +116,9 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
                 height: widget.height,
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.only(
-                  left: (widget.height - (widget.buttonSize ?? widget.height * 0.9)) / 2,
+                  left: (widget.height -
+                          (widget.buttonSize ?? widget.height * 0.9)) /
+                      2,
                 ),
                 child: widget.child ??
                     Container(
@@ -128,14 +129,13 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
                             ? [widget.boxShadow!]
                             : null,
                         color: Colors.grey,
-                        borderRadius:
-                        BorderRadius.circular(widget.radius),
+                        borderRadius: BorderRadius.circular(widget.radius),
                       ),
                       child: Center(child: widget.icon),
                     ),
               ),
             )
-          ] else ... [
+          ] else ...[
             Positioned(
                 left: _buttonPosition,
                 child: GestureDetector(
@@ -143,14 +143,18 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
                     _initialPosition = start.localPosition.dx;
                   },
                   onHorizontalDragUpdate: (update) {
-                    setState(() => _buttonPosition = (update.localPosition.dx - _initialPosition).clamp(0.0, widget.width - widget.height));
+                    setState(() => _buttonPosition =
+                        (update.localPosition.dx - _initialPosition)
+                            .clamp(0.0, widget.width - widget.height));
                   },
                   onHorizontalDragEnd: (end) async {
                     bool? hasVibrator = false;
                     if (_buttonPosition >= widget.width - widget.height) {
                       widget.onSlideCompleted();
                       hasVibrator = await Vibration.hasVibrator();
-                      if (widget.vibrationFlag && hasVibrator != null && hasVibrator) {
+                      if (widget.vibrationFlag &&
+                          hasVibrator != null &&
+                          hasVibrator) {
                         Vibration.vibrate(duration: 1500);
                       }
                     }
@@ -166,8 +170,7 @@ class _ButtonSlideComponentState extends State<ButtonSlideComponent> {
                     ),
                     child: Center(child: widget.icon),
                   ),
-                )
-            )
+                ))
           ],
         ],
       ),
