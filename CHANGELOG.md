@@ -1,3 +1,10 @@
+## [1.0.2] - 2024-08-02
+
+* Update version vibration 1.9.0 for slide button
+* Update description in pubspec.yaml
+* Downgrade SDK dart min 3.4.3
+* Update(Readme) - update version installing
+
 ## [1.0.1] - 2024-08-02
 
 * Update License.
